@@ -1,0 +1,75 @@
+units:
+  # Spacing variables
+  kx: cx
+  ky: cy
+  # Padding variables
+  px: kx + 2
+  py: ky + 2
+
+points:
+  zones:
+    # Primary 5x3 key matrix
+    matrix:
+      # Choc spacing
+      key:
+        padding: 1kx
+        spread: 1kx
+      columns:
+        # Five columns with pinky splay
+        pinky:
+          key:
+        ring:
+          key:
+            stagger: 7
+            splay: -3
+        middle:
+          key:
+            stagger: 2.5
+        index:
+          key:
+            stagger: -2.5
+        inner:
+          key:
+            stagger: -2.5
+      rows:
+        # Three main rows
+        bottom:
+        home:
+        top:
+    # Thumb cluster for layer switching and common modifier keys
+    thumbs:
+      # Choc spacing
+      key:
+        padding: 1ky
+        spread: 1kx
+      # Anchoring the thumb cluster from the right most key
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [-1ky, -1.5ky]
+      columns:
+        # Layer key
+        outer:
+          key:
+            splay: -5
+        # Modifier key
+        middle:
+          key:
+            splay: -15
+            shift: [2.5, -2]
+        # Secondary modifier key
+        inner:
+          key:
+            splay: -15
+            shift: [5.5, -3]
+      rows:
+        # Only one thumb row
+        cluster:
+
+  # Mirror keyboard to see both halves
+  #mirror: &mirror
+    #ref: matrix_inner_bottom
+    #distance: 4kx
+    
+
+    
+
