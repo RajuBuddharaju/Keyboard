@@ -3,8 +3,8 @@ units:
   kx: cx
   ky: cy
   # Padding variables
-  px: kx + 2
-  py: ky + 2
+  px: kx + 4
+  py: ky + 4
 
 points:
   zones:
@@ -12,7 +12,7 @@ points:
     matrix:
       # Choc spacing
       key:
-        padding: 1kx
+        padding: 1ky
         spread: 1kx
       columns:
         # Five columns with pinky splay
@@ -20,8 +20,9 @@ points:
           key:
         ring:
           key:
+            origin: [-12, -19]
             stagger: 7
-            splay: -3
+            splay: -5
         middle:
           key:
             stagger: 2.5
@@ -45,7 +46,7 @@ points:
       # Anchoring the thumb cluster from the right most key
       anchor:
         ref: matrix_inner_bottom
-        shift: [-1ky, -1.5ky]
+        shift: [-1.2ky, -1.5ky]
       columns:
         # Layer key
         outer:
@@ -60,7 +61,7 @@ points:
         inner:
           key:
             splay: -15
-            shift: [5.5, -3]
+            shift: [5.5, -3.4]
       rows:
         # Only one thumb row
         cluster:
@@ -69,7 +70,51 @@ points:
   #mirror: &mirror
     #ref: matrix_inner_bottom
     #distance: 4kx
-    
 
-    
+outlines:
+  raw:
+    - what: rectangle
+      where: true
+      size: [px, py]
+  
+  keys:
+    - what: rectangle
+      where: true
+      size: [kx - 0.5, ky - 0.5]
+  
+  board:
+    - what: polygon
+      operation: stack
+      points:
+        - ref:  matrix_pinky_bottom
+          shift: [-0.5px,-0.5py]
+        - ref:  matrix_pinky_top
+          shift: [-0.5px,0.5py]
+        - ref:  matrix_ring_top
+          shift: [-0.5px,0.5py]
+        - ref:  matrix_middle_top
+          shift: [-0.5px,0.5py]
+        - ref:  matrix_middle_top
+          shift: [0.5px,0.5py]
+        - ref:  matrix_index_top
+          shift: [0.5px,0.5py]
+        - ref:  matrix_inner_top
+          shift: [0.5px,0.5py]
+        - ref:  thumbs_inner_cluster
+          shift: [0.5px,0.5py]
+        - ref:  thumbs_inner_cluster
+          shift: [0.5px,-0.5py]
+        - ref:  thumbs_inner_cluster
+          shift: [-0.5px,-0.5py]
+        - ref:  thumbs_outer_cluster
+          shift: [0.5px,-0.5py]
+        - ref:  thumbs_outer_cluster
+          shift: [-0.5px,-0.5py]
+      fillet: 2
+  
+  combo:
+    - name: board
+    - operation: subtract
+      name: keys
+        
 
