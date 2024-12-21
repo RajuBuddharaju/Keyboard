@@ -10,6 +10,9 @@ points:
   zones:
     # Primary 5x3 key matrix
     matrix:
+      # Fix placement on KiCAD sheet.
+      anchor:
+        shift: [100, -100]
       # Choc spacing
       key:
         padding: 1ky
@@ -117,4 +120,26 @@ outlines:
     - operation: subtract
       name: keys
         
-
+pcbs:
+  production:
+    outlines:
+      main:
+        outline: board
+    footprints:
+      choc_hotswap:
+        what: choc
+        where: true
+        params:
+          keycaps: true
+          reverse: false
+          hotswap: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+      diode:
+        what: diode
+        where: true
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, -5]
